@@ -42,34 +42,3 @@ THE SOFTWARE.
 
 <img src='https://lh6.googleusercontent.com/-NoJxB98RGC8/UMDEznmPTiI/AAAAAAAAAcQ/cfDucT8eu4A/s800/squinty.jpg'><br/>
 <img src='https://lh6.googleusercontent.com/-g7q_OQGsehU/Uug7ID5J_EI/AAAAAAAAKIs/jPm4pB8Caps/s400/Ingress-Passcode-Decoder.PNG'>
-
-		<!-- This should turn the Ingress passcode 'xDZt4Ovws5urijtwcDKn' into '6GBY2HENRYZ8O7W' which is usable to get items-->
-		<form>
-			<div>Put in the data here:<br/><input type="text" id="originalCode"></div> <!--SECRET CODE GOES HERE-->
-			<div>Get the data from here:<br/><input type="text" id="newCode"></div> <!--SECRET OUTPUT APPEARS HERE-->
-		</form>
-		<div id='button' style='background:#888;width:150px;color:#fff;text-align:center;border:2px outset #888;'>Run that sucka!</div>
-	</body>
-	<script type='text/javascript'> //Begin JavaScript Now!
-	 $('#button').click(function(){ //When clicked...
-	 	var thingInNeed = $('#originalCode').val();//get the value of the first box
-	 	thingInNeed = thingInNeed.split('');//Splits all the letters into an array
-	 	var numberCounter=0; //We need a counter
-	 	$(thingInNeed).each(function(){ //run through the the elements (or letters) of the array
-	 		switch(true){ //Hey it's a switch statement. We always use true, right? Because we want the stuff below to be true.
-	 			case (/^[a-z]+$/.test(thingInNeed[numberCounter])): //This regex scans the letter to see if it's lowercase.
-	 				thingInNeed[numberCounter]=thingInNeed[numberCounter].toUpperCase();//if it is, it's true and runs this stuff
-	 				break; //end the switch statement.
-	 			case (/^[A-Z]+$/.test(thingInNeed[numberCounter])): //Same deal but uppercase letters
-	 				thingInNeed[numberCounter]=thingInNeed[numberCounter].toLowerCase(); //Switch those to lower case
-	 				break; 
-	 			default: //Usually there's a default option. I think default required, but doesn't HAVE to do anything.
-	 		}
-	 		numberCounter++; //increment the number counter so we can move on to the next letter in the array.
-	 	}); //End the each statement.
-	 	thingInNeed = thingInNeed.reverse(); //Flip it!
-	 	thingInNeed=thingInNeed.join(''); // Join it!
-	 	thingInNeed = window.atob(thingInNeed);// Rub it down! Oh no, this just does the conversion to Base64 encoding.
-	 	$('#newCode').val(thingInNeed); //Plugs it into the second box so the user can see it.
-	 }); //This is the end of that 'When clicked...'
-	</script> <!-- This is the end of the JavaScript -->
